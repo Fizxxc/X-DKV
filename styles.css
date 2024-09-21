@@ -90,3 +90,11 @@ footer {
     bottom: 0;
     margin-top: 40px; /* Tambahkan margin atas agar tidak terlalu menempel pada konten sebelumnya */
 }
+
+html, body {
+    overflow-x: hidden; /* Menghilangkan scroll horizontal */
+    overflow-y: auto; /* Mengizinkan scroll vertikal jika konten melebihi tinggi layar */
+    height: 100%; /* Memastikan elemen body mengambil seluruh tinggi halaman */
+    margin: 0; /* Menghilangkan margin default */
+    padding: 0; /* Menghilangkan padding default */
+}
