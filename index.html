@@ -14,5 +14,33 @@
         <p>— The Team</p>
     </div>
 
+    
+    <div class="time-container">
+        <h1>Waktu Indonesia Barat (WIB)</h1>
+        <p id="waktu"></p> <!-- Waktu akan ditampilkan di sini -->
+    </div>
+
+    <script>
+        // Fungsi untuk menampilkan waktu WIB
+        function tampilkanWaktuWIB() {
+            // Membuat objek Date dengan waktu UTC (Greenwich Mean Time)
+            const now = new Date();
+
+            // Menambahkan offset 7 jam untuk mendapatkan WIB (UTC+7)
+            const options = { timeZone: 'Asia/Jakarta', hour12: false, 
+                year: 'numeric', month: '2-digit', day: '2-digit', 
+                hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            
+            // Mengubah waktu ke format yang kita inginkan
+            const waktuWIB = now.toLocaleString('id-ID', options);
+
+            // Menampilkan waktu WIB di elemen dengan id 'waktu'
+            document.getElementById('waktu').innerHTML = waktuWIB;
+        }
+
+        // Memperbarui waktu setiap 1 detik (1000 ms)
+        setInterval(tampilkanWaktuWIB, 1000);
+    </script>
+
 </body>
 </html>
