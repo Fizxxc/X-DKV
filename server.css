@@ -1,0 +1,32 @@
+/* Style untuk body */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Mengatur tinggi halaman untuk mencakup 100% layar */
+    background-color: #f2f2f2; /* Warna latar belakang abu-abu terang */
+    font-family: 'Arial', sans-serif; /* Font yang digunakan */
+    color: #333; /* Warna teks default abu gelap */
+}
+
+/* Container untuk menampilkan waktu server */
+.time-container {
+    text-align: center; /* Menjadikan teks di dalamnya rata tengah */
+    background-color: white; /* Latar belakang putih untuk kotak konten */
+    padding: 40px; /* Padding di dalam kotak */
+    border-radius: 10px; /* Sudut kotak yang melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut di sekitar kotak */
+}
+
+.time-container h1 {
+    font-size: 36px; /* Ukuran font untuk judul */
+    margin-bottom: 20px; /* Spasi bawah setelah judul */
+    color: #4CAF50; /* Warna hijau untuk teks judul */
+}
+
+.time-container p {
+    font-size: 24px; /* Ukuran font untuk teks waktu */
+    color: #555; /* Warna teks abu-abu medium */
+}
