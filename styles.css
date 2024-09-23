@@ -51,3 +51,33 @@ body {
     font-size: 24px; /* Ukuran font untuk teks waktu */
     color: #555; /* Warna teks abu-abu medium */
 }
+
+/* Container untuk hitungan mundur */
+.countdown-container {
+    text-align: center; /* Menjadikan teks di dalamnya rata tengah */
+    background-color: white; /* Latar belakang putih untuk kotak konten */
+    padding: 40px; /* Padding di dalam kotak */
+    border-radius: 10px; /* Sudut kotak yang melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut di sekitar kotak */
+}
+
+.countdown-container h1 {
+    font-size: 36px; /* Ukuran font untuk judul */
+    margin-bottom: 20px; /* Spasi bawah setelah judul */
+    color: #FF6347; /* Warna merah tomato untuk teks judul */
+}
+
+#countdown {
+    font-size: 24px; /* Ukuran font untuk waktu */
+    color: #333; /* Warna teks abu gelap */
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Jarak antar elemen waktu */
+}
+
+#countdown span {
+    background-color: #4CAF50; /* Warna latar belakang hijau */
+    padding: 10px 20px; /* Ruang dalam elemen waktu */
+    color: white; /* Warna teks putih */
+    border-radius: 5px; /* Sudut melengkung pada elemen waktu */
+}
