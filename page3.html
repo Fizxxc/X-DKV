@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>There is Maintenance going on</title>
+    <link rel="stylesheet" href="page3.css">
+</head>
+<body>
+
+    <div class="maintenance-container">
+        <h1>We'll Be Back Soon!</h1>
+        <p>Sorry for the inconvenience but we're performing some maintenance at the moment. We'll be back online shortly!</p>
+        <p>— The Team</p>
+        <p id="waktu"></p> <!-- Waktu akan ditampilkan di sini -->
+    </div>
+
+    <script>
+        // Fungsi untuk menampilkan waktu WIB
+        function tampilkanWaktuWIB() {
+            // Membuat objek Date dengan waktu UTC (Greenwich Mean Time)
+            const now = new Date();
+
+            // Menambahkan offset 7 jam untuk mendapatkan WIB (UTC+7)
+            const options = { timeZone: 'Asia/Jakarta', hour12: false, 
+                year: 'numeric', month: '2-digit', day: '2-digit', 
+                hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            
+            // Mengubah waktu ke format yang kita inginkan
+            const waktuWIB = now.toLocaleString('id-ID', options);
+
+            // Menampilkan waktu WIB di elemen dengan id 'waktu'
+            document.getElementById('waktu').innerHTML = waktuWIB;
+        }
+
+        // Memperbarui waktu setiap 1 detik (1000 ms)
+        setInterval(tampilkanWaktuWIB, 1000);
+    </script>
+
+    <div class="countdown-container">
+        <h1>Situs Sedang Maintenance</h1>
+        <p>Maintenance selesai dalam:</p>
+        <div id="countdown">
+            <span id="days"></span> Hari 
+            <span id="hours"></span> Jam 
+            <span id="minutes"></span> Menit 
+            <span id="seconds"></span> Detik
+        </div>
+    </div>
+
+    <script>
+        // Tentukan waktu kapan maintenance selesai (contoh: 30 September 2024 pukul 12:00:00 WIB)
+        const maintenanceEndTime = new Date("Sep 30, 2024 12:00:00").getTime();
+
+        // Update hitungan mundur setiap 1 detik
+        const countdownInterval = setInterval(function() {
+            // Waktu saat ini
+            const now = new Date().getTime();
+            
+            // Hitung selisih antara waktu maintenance selesai dan sekarang
+            const timeLeft = maintenanceEndTime - now;
+            
+            // Konversi waktu yang tersisa ke hari, jam, menit, dan detik
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            // Tampilkan hasil hitung mundur di elemen HTML
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // Jika hitung mundur selesai, tampilkan pesan bahwa maintenance telah selesai
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector(".countdown-container").innerHTML = "<h1>Maintenance telah selesai!</h1>";
+            }
+        }, 1000);
+    </script>
+    
+        <!--page-->
+
+<section class="content">
+    <h1>Daftar Proyek</h1>
+    <p>Halaman 3 dari proyek Anda.</p>
+    <!-- Pagination Navigation -->
+    <div class="pagination">
+        <a href="./page.html">Previous</a>
+        <a href="./index.html">1</a>
+        <a href="./page.html">2</a>
+        <a href="./page3.html" class="active">3</a>
+        <a href="./page3.html">Next</a>
+    </div>
+</section>
+<!--end page-->
+
+</body>
+</html>

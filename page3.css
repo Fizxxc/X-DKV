@@ -1,0 +1,119 @@
+/* Style untuk body */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Container untuk konten maintenance */
+.maintenance-container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance-container h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ff6b6b;
+}
+
+.maintenance-container p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #666;
+}
+
+/* Container untuk menampilkan waktu server */
+.time-container {
+    text-align: center; /* Menjadikan teks di dalamnya rata tengah */
+    background-color: white; /* Latar belakang putih untuk kotak konten */
+    padding: 40px; /* Padding di dalam kotak */
+    border-radius: 10px; /* Sudut kotak yang melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut di sekitar kotak */
+}
+
+.time-container h1 {
+    font-size: 36px; /* Ukuran font untuk judul */
+    margin-bottom: 20px; /* Spasi bawah setelah judul */
+    color: #4CAF50; /* Warna hijau untuk teks judul */
+}
+
+.time-container p {
+    font-size: 24px; /* Ukuran font untuk teks waktu */
+    color: #555; /* Warna teks abu-abu medium */
+}
+
+/* Container untuk hitungan mundur */
+.countdown-container {
+    text-align: center; /* Menjadikan teks di dalamnya rata tengah */
+    background-color: white; /* Latar belakang putih untuk kotak konten */
+    padding: 40px; /* Padding di dalam kotak */
+    border-radius: 10px; /* Sudut kotak yang melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut di sekitar kotak */
+}
+
+.countdown-container h1 {
+    font-size: 36px; /* Ukuran font untuk judul */
+    margin-bottom: 20px; /* Spasi bawah setelah judul */
+    color: #FF6347; /* Warna merah tomato untuk teks judul */
+}
+
+#countdown {
+    font-size: 24px; /* Ukuran font untuk waktu */
+    color: #333; /* Warna teks abu gelap */
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Jarak antar elemen waktu */
+}
+
+#countdown span {
+    background-color: #2f7195; /* Warna latar belakang hijau */
+    padding: 10px 20px; /* Ruang dalam elemen waktu */
+    color: white; /* Warna teks putih */
+    border-radius: 5px; /* Sudut melengkung pada elemen waktu */
+}
+
+/*page*/
+h1{
+    text-align: center;
+}
+/* Style untuk tombol pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a.active {
+    background-color: #2f7195;
+    color: white;
+    border: 1px solid #2f7195;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+p {
+    text-align: center;
+}
+/*end page*/
