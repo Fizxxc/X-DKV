@@ -34,22 +34,24 @@ header {
 
 /* Main content padding to avoid overlap with fixed header */
 main {
-    padding-top: 80px; /* Adjust this based on the height of the fixed header */
-}
+    padding-top: 100px; /* Adjust this based on the height of the fixed header */
+    padding-left: 20px;
+    padding-right: 20px;
 
 /* Live chat styles */
 .live-chat {
     position: fixed;
-    bottom: 0;
+    bottom: 20px;
     right: 20px;
     width: 300px;
     border: 1px solid #ccc;
     background-color: white;
     z-index: 5;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for better visibility */
 }
 
 .chat-header {
-    background-color: #2f7195;
+    background-color: #333;
     color: white;
     padding: 10px;
     display: flex;
@@ -59,9 +61,10 @@ main {
 
 .chat-body {
     padding: 10px;
-    height: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Prevent overflow */
 }
 
 #chat-box {
@@ -81,19 +84,19 @@ main {
 
 button {
     padding: 10px;
-    background-color: #2f7195;
+    background-color: #333;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #1b465d;
+    background-color: #555;
 }
 
 /* Media queries for mobile responsiveness */
 @media only screen and (max-width: 600px) {
-    /* Header: stack navigation links vertically in mobile view */
-    header {
-        padding: 10px;
+    /* Ensure font size is larger and content fills more of the screen on mobile */
+    body {
+        font-size: 18px; /* Larger text for better readability on small screens */
     }
