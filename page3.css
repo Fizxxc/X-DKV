@@ -49,7 +49,7 @@ main {
 }
 
 .chat-header {
-    background-color: #333;
+    background-color: #2f7195;
     color: white;
     padding: 10px;
     display: flex;
@@ -81,14 +81,14 @@ main {
 
 button {
     padding: 10px;
-    background-color: #333;
+    background-color: #2f7195;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #1b465d;
 }
 
 /* Media queries for mobile responsiveness */
