@@ -1,100 +1,119 @@
-/* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Style untuk body */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #2f7195;
-    color: black;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10; /* Make sure the header is always on top */
-}
-
-/* Gaya untuk logo */
-.logooo img {
-    position: relative;
-    height: 130px; /* Atur ukuran tinggi logo */
-    width: auto;  /* Lebar mengikuti proporsi tinggi */
-    margin-right: 20px; /* Spasi antara logo dan teks */
-    margin-top: 10px; /* Mengangkat gambar ke atas */
-}
-
-/* Main content padding to avoid overlap with fixed header */
-main {
-    padding-top: 80px; /* Adjust this based on the height of the fixed header */
-}
-
-/* Live chat styles */
-.live-chat {
-    position: fixed;
-    bottom: 0;
-    right: 20px;
-    width: 300px;
-    border: 1px solid #ccc;
-    background-color: white;
-    z-index: 5;
-}
-
-.chat-header {
-    background-color: #2f7195;
-    color: white;
-    padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    font-family: 'Arial', sans-serif;
+    color: #333;
 }
 
-.chat-body {
-    padding: 10px;
-    height: 200px;
+/* Container untuk konten maintenance */
+.maintenance-container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance-container h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ff6b6b;
+}
+
+.maintenance-container p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #666;
+}
+
+/* Container untuk menampilkan waktu server */
+.time-container {
+    text-align: center; /* Menjadikan teks di dalamnya rata tengah */
+    background-color: white; /* Latar belakang putih untuk kotak konten */
+    padding: 40px; /* Padding di dalam kotak */
+    border-radius: 10px; /* Sudut kotak yang melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut di sekitar kotak */
+}
+
+.time-container h1 {
+    font-size: 36px; /* Ukuran font untuk judul */
+    margin-bottom: 20px; /* Spasi bawah setelah judul */
+    color: #4CAF50; /* Warna hijau untuk teks judul */
+}
+
+.time-container p {
+    font-size: 24px; /* Ukuran font untuk teks waktu */
+    color: #555; /* Warna teks abu-abu medium */
+}
+
+/* Container untuk hitungan mundur */
+.countdown-container {
+    text-align: center; /* Menjadikan teks di dalamnya rata tengah */
+    background-color: white; /* Latar belakang putih untuk kotak konten */
+    padding: 40px; /* Padding di dalam kotak */
+    border-radius: 10px; /* Sudut kotak yang melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut di sekitar kotak */
+}
+
+.countdown-container h1 {
+    font-size: 36px; /* Ukuran font untuk judul */
+    margin-bottom: 20px; /* Spasi bawah setelah judul */
+    color: #FF6347; /* Warna merah tomato untuk teks judul */
+}
+
+#countdown {
+    font-size: 24px; /* Ukuran font untuk waktu */
+    color: #333; /* Warna teks abu gelap */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 10px; /* Jarak antar elemen waktu */
 }
 
-#chat-box {
-    flex-grow: 1;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
+#countdown span {
+    background-color: #2f7195; /* Warna latar belakang hijau */
+    padding: 10px 20px; /* Ruang dalam elemen waktu */
+    color: white; /* Warna teks putih */
+    border-radius: 5px; /* Sudut melengkung pada elemen waktu */
 }
 
-#userInput {
-    width: calc(100% - 80px);
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
+/page/
+h1{
+    text-align: center;
+}
+/* Style untuk tombol pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-button {
-    padding: 10px;
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a.active {
     background-color: #2f7195;
     color: white;
-    border: none;
-    cursor: pointer;
+    border: 1px solid #2f7195;
 }
 
-button:hover {
-    background-color: #1b465d;
+.pagination a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-/* Media queries for mobile responsiveness */
-@media only screen and (max-width: 600px) {
-    /* Header: stack navigation links vertically in mobile view */
-    header {
-        padding: 10px;
-    }
+p {
+    text-align: center;
 }
+/end page/
