@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Music Player with Playlist</title>
+    <link rel="stylesheet" href="/song/song.css"> <!-- Hubungkan file CSS -->
+</head>
+<body>
+    <!-- Header dengan logo -->
+    <header class="header">
+        <img src="/song/dkv.png" alt="Logo" class="logo">
+        <h1>X.DKV Web Music</h1>
+    </header>
+
+    <div class="player-container">
+        <!-- Music player area -->
+        <div class="music-player">
+            <h2 id="song-title">Choose a song from the playlist</h2>
+            <audio id="audio-player" controls>
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <!-- Playlist area -->
+        <div class="playlist">
+            <h3>Playlist</h3>
+            <ul id="song-list">
+                <!-- Lagu akan di-generate oleh JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Add new song area -->
+        <div class="add-song">
+            <h3>Add a Song to Playlist</h3>
+            <input type="file" id="song-input" accept="audio/*">
+        </div>
+    </div>
+
+
+        <!--page-->
+
+<section class="content">
+    <h1>Daftar Proyek</h1>
+    <p>Halaman 3 dari proyek Anda.</p>
+    <!-- Pagination Navigation -->
+    <div class="pagination">
+        <a href="/page3.html">Previous</a>
+        <a href="/index.html">1</a>
+        <a href="/page.html">2</a>
+        <a href="/page3.html">3</a>
+        <a href="/song/song.html" class="active">4</a>
+        <a href="/song/song.html">Next</a>
+    </div>
+</section>
+<!--end page-->
+
+    <script src="/song/song.js"></script> <!-- Hubungkan file JavaScript -->
+</body>
+</html>
