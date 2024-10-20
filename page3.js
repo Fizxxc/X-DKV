@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const projectsPerPage = 4;  // Jumlah proyek yang ditampilkan per halaman
+    const projectsPerPage = 10;  // Jumlah proyek yang ditampilkan per halaman
     const projectsContainer = document.getElementById('projects-container');
     const paginationContainer = document.getElementById('pagination');
     const projects = Array.from(document.getElementsByClassName('project')); // Mengambil semua proyek
