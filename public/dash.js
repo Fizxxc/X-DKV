@@ -4,7 +4,7 @@ if (localStorage.getItem('visitCount')) {
     var visitCount = parseInt(localStorage.getItem('visitCount'));
 } else {
     // Jika tidak ada data, set jumlah kunjungan ke 0
-    var visitCount = 0;
+    var visitCount = 0x;
 }
 
 // Setiap kali halaman diakses, jumlah kunjungan bertambah
