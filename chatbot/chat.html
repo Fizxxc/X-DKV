@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Admin</title>
+    <style>
+        #chat-container { width: 320px; height: 450px; border: 1px solid #ddd; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0px 5px 10px rgba(0,0,0,0.1); }
+        #chat-header { background-color: #4CAF50; color: white; padding: 10px; font-size: 18px; text-align: center; font-weight: bold; }
+        #chat-body { flex: 1; padding: 10px; overflow-y: auto; background-color: #f4f7f9; }
+        #messages { list-style: none; padding: 0; }
+        .message { padding: 8px; border-radius: 10px; margin: 5px 0; max-width: 70%; }
+        .user { background-color: #DCF8C6; align-self: flex-end; }
+        .admin { background-color: #FFF; border: 1px solid #ddd; }
+        #chat-footer { display: flex; border-top: 1px solid #ddd; }
+        #input-message { flex: 1; padding: 10px; border: none; }
+        #send-button { padding: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-header">Chat with Admin</div>
+        <div id="chat-body">
+            <ul id="messages"></ul>
+        </div>
+        <div id="chat-footer">
+            <input type="text" id="input-message" placeholder="Type a message..." />
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const input = document.getElementById('input-message');
+            const message = input.value;
+            if (message.trim()) {
+                displayMessage(message, 'user');
+                input.value = '';
+                
+                const response = await fetch('/.netlify/functions/chat-bot', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message })
+                });
+                const data = await response.json();
+                displayMessage(data.reply, 'admin');
+            }
+        }
+
+        function displayMessage(text, sender) {
+            const messages = document.getElementById('messages');
+            const messageElement = document.createElement('li');
+            messageElement.className = 'message ' + sender;
+            messageElement.textContent = text;
+            messages.appendChild(messageElement);
+            messages.scrollTop = messages.scrollHeight;
+        }
+    </script>
+</body>
+</html>
