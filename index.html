@@ -26,6 +26,27 @@
         </nav>
     </header>
 
+    <div class="slider-container" id="slider">
+        <div class="slide-wrapper" id="slideWrapper">
+          <!-- Slide dengan gambar iklan -->
+          <div class="slide">
+            <img src="img2/Iklan1.png" alt="Iklan 1">
+          </div>
+          <div class="slide">
+            <img src="Smkk.png" alt="Iklan 2">
+          </div>
+          <div class="slide">
+            <img src="image3.jpg" alt="Iklan 3">
+          </div>
+        </div>
+      
+        <div class="dot-container">
+          <span class="dot" onclick="currentSlide(1)"></span> 
+          <span class="dot" onclick="currentSlide(2)"></span> 
+          <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+      </div>
+
     <section id="home">
         <h2>Home</h2>
         <p>Welcome guys to class X.DKV</p>
@@ -122,6 +143,11 @@
 </section>
 <!--end page-->
 
+<!-- Floating Button for Chat Project -->
+<a href="" id="chat-float-button" target="_blank">
+    <img src="/img2/live-chat.png" alt="Chat Bot">
+</a>
+
     <footer>
         <h3>Contact Me</h3>
         <p>Email: dkvmetschoo@yahoo.com</p>
@@ -133,6 +159,8 @@
             </a>
             <p>&copy; 2024 X.DKV OFFICIAL</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
  

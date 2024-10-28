@@ -1,0 +1,3 @@
+[build]
+  publish = "chatbot"
+  functions = "netlify/functions"
