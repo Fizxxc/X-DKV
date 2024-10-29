@@ -33,10 +33,10 @@
             <img src="img2/Iklan1.png" alt="Iklan 1">
           </div>
           <div class="slide">
-            <img src="Smkk.png" alt="Iklan 2">
+            <img src="img2/Iklan2.png" alt="Iklan 2">
           </div>
           <div class="slide">
-            <img src="image3.jpg" alt="Iklan 3">
+            <img src="img2/iklan3.png" alt="Iklan 3">
           </div>
         </div>
       
@@ -125,6 +125,30 @@
 </section>
 <!--end2-->
 
+<!--contact-->
+<section id="contact">
+<div class="form-container">
+<h1>Contact Us</h1>
+<form name="contact" method="POST" data-netlify="true">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <button type="submit">Send Message</button>
+</form>
+
+<div id="success-message" style="display:none;">
+  Thank you! Your message has been sent.
+</div>
+</div>
+</section>
+<!--end-->
+
 <!--page-->
 
 <section class="content">
@@ -143,11 +167,6 @@
 </section>
 <!--end page-->
 
-<!-- Floating Button for Chat Project -->
-<a href="https://admin-vchat.netlify.app" id="chat-float-button" target="_blank">
-    <img src="/img2/live-chat.png" alt="Chat Bot">
-</a>
-
     <footer>
         <h3>Contact Me</h3>
         <p>Email: dkvmetschoo@yahoo.com</p>
@@ -159,6 +178,11 @@
             </a>
             <p>&copy; 2024 X.DKV OFFICIAL</p>
     </footer>
+
+    <!-- Floating Button for Chat Project -->
+<a href="https://admin-vchat.netlify.app" id="chat-float-button" target="_blank">
+    <img src="img2/live-chat.png" alt="Chat Bot">
+</a>
 
     <script src="script.js"></script>
 </body>

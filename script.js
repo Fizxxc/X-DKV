@@ -42,3 +42,18 @@ document.getElementById("slider").addEventListener("touchend", (e) => {
 
 // Menjalankan slide otomatis pertama kali
 showSlide(slideIndex);
+
+document.querySelector("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(new FormData(event.target)).toString()
+  })
+  .then(() => {
+    document.getElementById("success-message").style.display = "block";
+    event.target.reset();
+  })
+  .catch(error => alert("Error: " + error));
+});
