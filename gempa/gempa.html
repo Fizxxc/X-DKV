@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Gempa By Dkv Metschoo</title>
+    <!-- SweetAlert2 CSS dan JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Leaflet CSS dan JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map { height: 400px; margin-top: 20px; }
+
+        /*page*/
+h1{
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+/* Style untuk tombol pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a.active {
+    background-color: #2f7195;
+    color: white;
+    border: 1px solid #2f7195;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/*end page*/
+
+footer {
+    background-color: #2f7195;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative; /* Ubah dari fixed menjadi relative */
+    width: 100%;
+    bottom: 0;
+    margin-top: 40px; /* Tambahkan margin atas agar tidak terlalu menempel pada konten sebelumnya */
+}
+
+/* Gaya untuk logo */
+.logoooo img {
+    position: relative;
+    height: 100px; /* Atur ukuran tinggi logo */
+    width: auto;  /* Lebar mengikuti proporsi tinggi */
+    margin-right: 20px; /* Spasi antara logo dan teks */
+    margin-top: -1px; /* Mengangkat gambar ke atas */
+}
+
+html, body {
+    overflow-x: hidden; /* Menghilangkan scroll horizontal */
+    overflow-y: auto; /* Mengizinkan scroll vertikal jika konten melebihi tinggi layar */
+    height: 100%; /* Memastikan elemen body mengambil seluruh tinggi halaman */
+    margin: 0; /* Menghilangkan margin default */
+    padding: 0; /* Menghilangkan padding default */
+}
+
+  /* Style for Floating Chat Button */
+  #chat-float-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #2f7195;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#chat-float-button:hover {
+    background-color: #2f7195;
+}
+
+#chat-float-button img {
+    width: 30px;
+    height: 30px;
+}
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; font-family: Arial, sans-serif;">Info Gempa By X.Dkv Metschoo</h1>
+    <p id="status" style="text-align: center; font-size: 18px; color: #555;">Mendeteksi gempa...</p>
+    <div id="map"></div>
+    <audio id="alarmSound" src="/gempa/alarm.mp3" loop></audio> <!-- Alarm berulang -->
+
+    <script>
+        const apiUrl = 'https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.json'; // API BMKG
+        const statusElement = document.getElementById("status");
+        const alarmSound = document.getElementById("alarmSound");
+
+        let lastGempaId = null; // Untuk menyimpan ID gempa terakhir
+
+        // Inisialisasi Peta Leaflet
+        const map = L.map('map').setView([-2.5489, 118.0149], 5); // Koordinat Indonesia
+
+        // Menambahkan Tile Layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let gempaMarker = null; // Marker untuk gempa
+
+        // Fungsi untuk mengambil data gempa
+        async function checkEarthquake() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                const gempaTerbaru = data.Infogempa.gempa[0];
+                
+                // Cek apakah gempa ini sudah terdeteksi sebelumnya
+                if (gempaTerbaru.Shakemap !== lastGempaId) {
+                    lastGempaId = gempaTerbaru.Shakemap;
+                    
+                    // Update status di halaman
+                    statusElement.innerHTML = `Gempa terbaru: ${gempaTerbaru.Wilayah} dengan kekuatan ${gempaTerbaru.Magnitude} SR`;
+
+                    // Koordinat Gempa
+                    const lat = parseFloat(gempaTerbaru.Lintang);
+                    const lng = parseFloat(gempaTerbaru.Bujur);
+
+                    // Tambahkan atau perbarui marker gempa
+                    if (gempaMarker) {
+                        gempaMarker.setLatLng([lat, lng]);
+                    } else {
+                        gempaMarker = L.marker([lat, lng]).addTo(map);
+                    }
+                    
+                    // Pusatkan peta pada lokasi gempa
+                    map.setView([lat, lng], 6);
+
+                    // Jika magnitudo gempa cukup besar
+                    if (parseFloat(gempaTerbaru.Magnitude) >= 5.0) { // Threshold gempa
+                        alarmSound.play(); // Bunyi alarm
+                        
+                        // Tampilkan notifikasi SweetAlert dengan detail gempa
+                        Swal.fire({
+                            title: 'Peringatan Gempa!',
+                            html: `<strong>Lokasi:</strong> ${gempaTerbaru.Wilayah}<br>
+                                   <strong>Kekuatan:</strong> ${gempaTerbaru.Magnitude} SR<br>
+                                   <strong>Waktu:</strong> ${gempaTerbaru.Tanggal} ${gempaTerbaru.Jam}`,
+                            icon: 'warning',
+                            confirmButtonText: 'OK',
+                            background: '#fef6f6',
+                            color: '#d9534f',
+                            confirmButtonColor: '#d9534f'
+                        }).then(() => {
+                            // Hentikan alarm saat notifikasi ditutup
+                            alarmSound.pause();
+                            alarmSound.currentTime = 0;
+
+                            // Tampilkan informasi gempa di halaman
+                            statusElement.innerHTML = `<strong>Gempa Terkini:</strong><br>
+                                                       Lokasi: ${gempaTerbaru.Wilayah}<br>
+                                                       Kekuatan: ${gempaTerbaru.Magnitude} SR<br>
+                                                       Waktu: ${gempaTerbaru.Tanggal} ${gempaTerbaru.Jam}`;
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error("Gagal mengambil data gempa:", error);
+                statusElement.innerHTML = "Gagal mendeteksi gempa.";
+            }
+        }
+
+        // Panggil fungsi setiap 10 detik untuk mengecek gempa terbaru
+        setInterval(checkEarthquake, 10000);
+    </script>
+
+            <!--page-->
+
+            <section class="content">
+                <h1>Daftar Proyek</h1>
+                <p>Halaman 6 dari proyek Anda.</p>
+                <!-- Pagination Navigation -->
+                <div class="pagination">
+                    <a href="/public/dash.html">Previous</a>
+                    <a href="/gempa/gempa.html" class="active">6</a>
+                    <a href="/maintance.html">7</a>
+                    <a href="/maintance.html">8</a>
+                    <a href="/maintance.html">9</a>
+                    <a href="/maintance.html">Next</a>
+                </div>
+            </section>
+            <!--end page-->
+            
+            <!-- Footer -->
+        <footer>
+            <h3>Contact Me</h3>
+            <p>Email: <a href="mailto:dkvmetschoo@yahoo.com?subject=Subjek&body=Isi%20pesan">dkvmetschoo@yahoo.com</a></p>
+            <p>Telepon: 0857-7656-8948</p>
+            <div class="header-container"></div>
+                <!-- Logo di kiri -->
+                <a href="https://www.smkmetlandcibitung.net/" class="logoooo">
+                    <img src="/public/Smkk.png" alt="Logo Smk">
+                </a>
+                <p>&copy; 2024 X.DKV OFFICIAL</p>
+        </footer>
+    
+            <!-- Floating Button for Chat Project -->
+    <a href="https://admin-vchat.netlify.app" id="chat-float-button" target="_blank">
+        <img src="/public/live-chat.png" alt="Chat Bot">
+    </a>
+
+</body>
+</html>
