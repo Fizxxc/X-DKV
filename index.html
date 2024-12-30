@@ -33,7 +33,7 @@
             <img src="img2/Iklan1.png" alt="Iklan 1">
           </div>
           <div class="slide">
-            <img src="img2/Iklan2.png" alt="Iklan 2">
+            <img src="img2/iklan3.png" alt="Iklan 2">
           </div>
           <div class="slide">
             <img src="img2/iklan3.png" alt="Iklan 3">
@@ -126,27 +126,25 @@
 <!--end2-->
 
 <!--contact-->
-<section id="contact">
-<div class="form-container">
-<h1>Contact Us</h1>
-<form name="contact" method="POST" data-netlify="true">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" required>
-
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required>
-
-  <label for="message">Message</label>
-  <textarea id="message" name="message" rows="5" required></textarea>
-
-  <button type="submit">Send Message</button>
-</form>
-
-<div id="success-message" style="display:none;">
-  Thank you! Your message has been sent.
+<div id="comments-section">
+    <h2>Leave a Comment</h2>
+    <form id="commentForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" placeholder="Your Comment" rows="4" required></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <div id="comment-list">
+        <h3>All Comments</h3>
+        <ul id="comments-display"></ul>
+    </div>
 </div>
-</div>
-</section>
 <!--end-->
 
 <!--page-->
@@ -183,7 +181,7 @@
 <a href="https://admin-vchat.netlify.app" id="chat-float-button" target="_blank">
     <img src="img2/live-chat.png" alt="Chat Bot">
 </a>
-
+<script src="https://formspree.io/js/formbutton-v1.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

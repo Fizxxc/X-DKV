@@ -57,3 +57,36 @@ document.querySelector("form").addEventListener("submit", function(event) {
   })
   .catch(error => alert("Error: " + error));
 });
+
+const commentForm = document.getElementById('commentForm');
+    const commentsDisplay = document.getElementById('comments-display');
+
+    // Handle form submission
+    commentForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const formData = new FormData(commentForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const comment = formData.get('comment');
+
+        // Add the comment to the display list
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${name}</strong>: ${comment}`;
+        commentsDisplay.appendChild(li);
+
+        // Send the comment to Formspree
+        await fetch('https://formspree.io/f/xnnnzzbk', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name,
+                email,
+                comment,
+            }),
+        });
+
+        // Reset the form
+        commentForm.reset();
+        alert('Comment submitted successfully!');
+    });

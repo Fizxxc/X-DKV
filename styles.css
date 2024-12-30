@@ -82,13 +82,37 @@ a {
     padding: 10px;
     width: 30%;
     text-align: center;
-}
-
-.project-card img {
+    box-sizing: border-box; /* Pastikan padding tidak memengaruhi ukuran keseluruhan */
+    margin: 10px auto; /* Tambahkan margin untuk memberikan jarak antar kartu */
+  }
+  
+  .project-card img {
     width: 100%;
     height: auto;
-}
-
+  }
+  
+  /* Container untuk menata project-card */
+  .project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; /* Jarak antar kartu */
+    padding: 10px;
+    box-sizing: border-box; /* Pastikan padding tidak memengaruhi ukuran keseluruhan */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .project-card {
+      width: 100%; /* Full width pada layar lebih kecil */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .project-card {
+      width: 100%; /* Tetap full width pada layar sangat kecil */
+    }
+  }
+  
 /*page*/
 h1{
     text-align: center;
@@ -150,7 +174,6 @@ html, body {
     padding: 0; /* Menghilangkan padding default */
 }
 
-/* Container untuk slider */
 .slider-container {
     position: relative;
     max-width: 100%;
@@ -173,12 +196,13 @@ html, body {
     background-color: #ffffff;
   }
   
-  /* Gaya gambar agar tidak terlalu zoom */
+  /* Gaya gambar agar responsif */
   .slide img {
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
   
   /* Dot indikator */
@@ -202,6 +226,28 @@ html, body {
   .dot.active {
     background-color: #717171;
   }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .slide {
+      height: 250px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .slide {
+      height: 200px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  
 
   /* Style for Floating Chat Button */
 #chat-float-button {
@@ -229,49 +275,89 @@ html, body {
     height: 30px;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-  }
-  
-form {
-    max-width: 400px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  label {
+#comments-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+#comments-section h2 {
+    font-size: 1.8rem;
+    color: #2f7195;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#comments-section label {
+    display: block;
     font-weight: bold;
-  }
-  
-  input, textarea {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#comments-section input,
+#comments-section textarea {
     width: 100%;
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#comments-section input:focus,
+#comments-section textarea:focus {
+    border-color: #2f7195;
+    outline: none;
+    box-shadow: rgb(47, 113, 149);
+}
+
+#comments-section button {
+    display: inline-block;
+    width: 100%;
+    background: #2f7195;
     color: white;
-    background-color: #0073e6;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #005bb5;
-  }
-  
-  #success-message {
-    margin-top: 20px;
-    color: green;
+    padding: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
-  }
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#comments-section button:hover {
+    background: #2f7195;
+}
+
+#comments-section #comment-list {
+    margin-top: 2rem;
+}
+
+#comments-section #comment-list h3 {
+    font-size: 1.5rem;
+    color: #2f7195;
+    margin-bottom: 1rem;
+}
+
+#comments-section #comments-display {
+    list-style-type: none;
+    padding: 0;
+}
+
+#comments-section #comments-display li {
+    background: #f4f4f9;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#comments-section #comments-display li strong {
+    color: #2f7195;
+    font-weight: bold;
+}
